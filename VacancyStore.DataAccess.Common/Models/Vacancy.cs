@@ -7,7 +7,9 @@ namespace VacancyStore.DataAccess.Common.Models
 
         public Employer Employer { get; set; }
 
-        public string Description { get; set; }
+        public string Requirement { get; set; }
+
+        public string Responsibility { get; set; }
 
         public BaseIdName Area { get; set; }
 

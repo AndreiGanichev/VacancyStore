@@ -3,7 +3,12 @@ using Ninject;
 using Ninject.Web.Common;
 using Ninject.Web.Common.WebHost;
 using System;
+using System.Configuration;
 using System.Web;
+using VacancyStore.DataAccess.Remote;
+using VacancyStore.DataAccess.Remote.Helpers;
+using VacancyStore.DataAccess.Remote.HHApi;
+using VacancyStore.DataAccess.Repositories;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(VacancyStore.Website.App_Start.NinjectConfigurator), "OnStart")]
 [assembly: WebActivatorEx.ApplicationShutdownMethod(typeof(VacancyStore.Website.App_Start.NinjectConfigurator), "Onstop")]
@@ -36,6 +41,10 @@ namespace VacancyStore.Website.App_Start
 
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IVacancyRepository>().To<RemoteRepository>();
+            kernel.Bind<IApiClient>().To<HHApiClient>();
+            kernel.Bind<RestApiClient>().ToConstructor(
+               c => new RestApiClient(ConfigurationManager.AppSettings["ApiBaseUrl"]));
         }
     }
 }

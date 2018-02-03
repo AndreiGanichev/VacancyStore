@@ -14,12 +14,12 @@ namespace VacancyStore.DataAccess.Repositories
             _apiClient = apiClient;
         }
 
-        public IEnumerable<Vacancy> Get(long offset = 0, long? amount = null)
+        public IEnumerable<Vacancy> Get(bool activeOnly = true, int pageNumber = 0, int perPage = 20)
         {
-            throw new NotImplementedException();
+            return _apiClient.Get(activeOnly, pageNumber, perPage);
         }
 
-        public IEnumerable<Vacancy> Search(string vacancyName, string employerName, long? salaryFrom, long offset = 0, long? amount = null)
+        public IEnumerable<Vacancy> Search(string vacancyName, string employerName, long? salaryFrom, bool activeOnly = true, int pageNumber = 0, int perPage = 20)
         {
             throw new NotImplementedException();
         }

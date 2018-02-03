@@ -9,8 +9,8 @@ namespace VacancyStore.DataAccess.Repositories
 {
     public interface IVacancyRepository
     {
-        IEnumerable<Vacancy> Get(long offset = 0, long? amount = null);
+        IEnumerable<Vacancy> Get(bool activeOnly = true, int pageNumber = 0, int perPage = 20);
 
-        IEnumerable<Vacancy> Search(string vacancyName, string employerName, long? salaryFrom, long offset = 0, long? amount = null);
+        IEnumerable<Vacancy> Search(string vacancyName, string employerName, long? salaryFrom, bool activeOnly = true, int pageNumber = 0, int perPage = 20);
     }
 }

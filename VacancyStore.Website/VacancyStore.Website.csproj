@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -92,6 +96,7 @@
       <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,7 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectConfigurator.cs" />
+    <Compile Include="App_Start\ObjectMappingConfigurator.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,8 +170,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VacancyStore.DataAccess.Common\VacancyStore.DataAccess.Common.csproj">
+      <Project>{ec81a4a4-ccc1-4840-8908-24f84d73c8c8}</Project>
+      <Name>VacancyStore.DataAccess.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VacancyStore.DataAccess.Remote\VacancyStore.DataAccess.Remote.csproj">
+      <Project>{a5ce8ffe-5f28-4f17-841e-29008b5eb524}</Project>
+      <Name>VacancyStore.DataAccess.Remote</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VacancyStore.DataAccess.Repositories\VacancyStore.DataAccess.Repositories.csproj">
+      <Project>{61AB2C5A-BE0D-49D3-A8F5-E08983D3CBA4}</Project>
+      <Name>VacancyStore.DataAccess.Repositories</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

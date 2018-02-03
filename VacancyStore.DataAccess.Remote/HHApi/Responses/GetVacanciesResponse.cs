@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using VacancyStore.DataAccess.Models.RemoteVacancy;
 
-namespace VacancyStore.DataAccess.Models.RemoteVacancy
+namespace VacancyStore.DataAccess.Remote.Responses
 {
-    public class GetRemoteVacanciesResponse
+    public class GetVacanciesResponse
     {
         public bool? Clusters { get; set; }
 
