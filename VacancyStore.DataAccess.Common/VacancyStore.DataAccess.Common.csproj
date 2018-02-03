@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{59D7441C-FE45-4320-9905-98D91A16F145}</ProjectGuid>
+    <ProjectGuid>{EC81A4A4-CCC1-4840-8908-24F84D73C8C8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>VacancyStore.DataAccess</RootNamespace>
-    <AssemblyName>VacancyStore.DataAccess</AssemblyName>
+    <RootNamespace>VacancyStore.DataAccess.Common</RootNamespace>
+    <AssemblyName>VacancyStore.DataAccess.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,11 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BaseIdName.cs" />
+    <Compile Include="Models\Employer.cs" />
+    <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\Vacancy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

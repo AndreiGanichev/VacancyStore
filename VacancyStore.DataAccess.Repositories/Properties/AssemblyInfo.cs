@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("VacancyStore.DataAccess")]
+[assembly: AssemblyTitle("VacancyStore.DataAccess.Repositories")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("VacancyStore.DataAccess")]
+[assembly: AssemblyProduct("VacancyStore.DataAccess.Repositories")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("59d7441c-fe45-4320-9905-98d91a16f145")]
+[assembly: Guid("61ab2c5a-be0d-49d3-a8f5-e08983d3cba4")]
 
 // Version information for an assembly consists of the following four values:
 //
