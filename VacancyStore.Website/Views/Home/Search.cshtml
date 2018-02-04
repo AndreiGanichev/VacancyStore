@@ -1,0 +1,34 @@
+﻿@model VacancyStore.Website.Models.SearchRequestData
+
+@using (Ajax.BeginForm("Search", new AjaxOptions { UpdateTargetId = "ListContainer" }))
+{
+        <div class="title h3">Поиск</div>
+        <div class="form-group row">
+            <label for="SearchString" class="col-lg-5 search-form-label">Ключевые слова:</label>
+            @Html.TextBox("SearchString", Model.SearchString, new { @class = "form-control-plaintext col-lg-7" })
+        </div>
+        <div class="form-group row">
+            <div class="col-lg-5 search-form-label">Искать только:</div> 
+            <div class="col-lg-7">
+                <div class="form-check">
+                    @Html.CheckBox("VacancyNameSearchEnable", Model.VacancyNameSearchEnable, new { @class = "form-check-input" })
+                    <label for="VacancyNameSearchEnable" class="search-form-label">в названии вакансии</label>
+                </div>
+                <div class="form-check">
+                    @Html.CheckBox("VacancyDescSearchEnable", Model.VacancyDescSearchEnable, new { @class = "form-check-input" })
+                    <label for="VacancyDescSearchEnable" class="search-form-label">в описании вакансии</label>
+                </div>
+                <div class="form-check">
+                    @Html.CheckBox("EmployerSearchEnable", Model.VacancyDescSearchEnable, new { @class = "form-check-input" })
+                    <label for="VacancyDescSearchEnable" class="search-form-label">в названии компании</label>
+                </div>
+            </div>  
+        </div>
+        <div class="form-group row">
+            <label for="SalaryFrom" class="col-lg-5 search-form-label">Зарплата от</label>
+            @Html.TextBox("SalaryFrom", Model.SalaryFrom, new { @class = "form-control-plaintext col-lg-7" })
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-default" id="SearchButton">Найти</button>
+        </div>
+}

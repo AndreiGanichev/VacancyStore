@@ -4,46 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section SearchForm
+{
+    @Html.Partial("Search", new VacancyStore.Website.Models.SearchRequestData())
+}
+
 @section VacancyList
 {
-    <p class="h4" id="total-items-count">@ViewHelper.GetTotalCountSignature(Model.TotalItemsCount)</p>
-    <div class="pagination">
-        @Html.GetPageLinks(Model.TotalPageNumber, Model.CurrentPageNumber, x => Url.Action("Index", new { page = x }))
+    <div id="ListContainer">
+        @Html.Partial("VacancyList", Model)
     </div>
-    <ul class="list-group">
-        @foreach(var vacancy in Model.ItemsOnPage)
-        {
-            <li class="list-group-item vacancy-container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <div class="h3">@vacancy.Name</div>
-
-                        @if(!string.IsNullOrWhiteSpace(vacancy.Employer?.EmployerPageUrl))
-                        {
-                            <a class="vacancy-meta-info" href=@vacancy.Employer.EmployerPageUrl>@vacancy.Employer.Name</a>
-                        }
-                        else
-                        {
-                            <div class="vacancy-meta-info">@vacancy.Employer.Name</div>
-                        }
-                        
-                        <div class="vacancy-meta-info">@vacancy.Area.Name</div>
-                        <p>@vacancy.Responsibility</p>
-                        <p>@vacancy.Requirement</p>
-
-                        @if (!string.IsNullOrWhiteSpace(vacancy.ApplyPageUrl))
-                        {
-                            <a href=@vacancy.ApplyPageUrl>Откликнуться</a>
-                        }
-
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="h3">@ViewHelper.GetSalarySigniture(vacancy.Salary)</div>
-                        <img src="@vacancy.Employer.LogoPath" class="logo"/>                
-                    </div>
-                </div>
-            </li>
-        }
-    </ul>
 }
 

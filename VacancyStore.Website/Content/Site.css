@@ -20,10 +20,11 @@
     margin:5px 0;
 }
 
-#header-title{
+.title{
     color:#E3DEC1;
     font-family:Georgia;
-    font-weight:bold
+    font-weight:bold;
+    margin:10px 0
 }
 
 .logo{
@@ -37,4 +38,16 @@
     font-weight:bold;
     font-size:24px;
     margin:10px;
+}
+
+.search-form-label{
+    font-family:Arial;
+    font-weight:normal;
+    font-size:16px;
+}
+
+#SearchButton{
+    background-color:#E3DEC1;
+    font-size:16px;
+    float:right;
 }

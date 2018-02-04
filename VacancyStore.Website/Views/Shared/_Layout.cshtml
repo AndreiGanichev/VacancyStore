@@ -12,20 +12,21 @@
 </head>
 <body>
     <div class="jumbotron" id="header">
-        <h1 id="header-title">Вакансии</h1>
+        @Html.ActionLink("Вакансии", "Index", "Home", new { @class = "title h1" })
     </div>
     <div class="row">
-        <div class="col-lg-2" id="left-container"></div>
-        <div class="col-lg-8" id="main-container">
-            @RenderSection("VacancyList")
+        <div class="col-lg-4" id="left-container">
+            @RenderSection("SearchForm")
         </div>
-        <div class="col-lg-2" id="right-container"></div>
+        <div class="col-lg-8" id="main-container">
+            @RenderSection("VacancyList", false)
+        </div>
     </div>
     <div id="footer"/>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/myScripts")
+    @Scripts.Render("~/bundles/ajax")
     @RenderSection("scripts", required: false)
 </body>
 </html>

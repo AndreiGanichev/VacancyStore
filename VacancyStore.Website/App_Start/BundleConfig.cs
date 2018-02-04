@@ -18,8 +18,8 @@ namespace VacancyStore.Website.App_Start
                 .Include("~/Scripts/modernizr-*"));
             bundles.Add(new ScriptBundle("~/bundles/bootstrap")
                 .Include("~/Scripts/bootstrap*"));
-            //bundles.Add(new ScriptBundle("~/bundles/common")
-            //    .Include("~/Scripts/common.js"));
+            bundles.Add(new ScriptBundle("~/bundles/ajax")
+                .Include("~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new StyleBundle("~/Content/css/jqueryui")
                 .Include("~/Content/themes/jquery-ui*"));

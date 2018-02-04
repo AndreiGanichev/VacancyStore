@@ -27,5 +27,15 @@ namespace VacancyStore.Website.Controllers
             var pageInfo = new PageInfo<Vacancy>(vacancies, page, _itemsPerPage, totalItemsCount);
             return View(pageInfo);
         }
+
+        [HttpPost]
+        public ActionResult Search(SearchRequestData searchData)
+        {
+            //заглушка для тестирования: возвращаем вторую страницу
+            long totalItemsCount;
+            var vacancies = _vacancyRepository.Get(out totalItemsCount, true, 2, _itemsPerPage);
+            var pageInfo = new PageInfo<Vacancy>(vacancies, 2, _itemsPerPage, totalItemsCount);
+            return PartialView("VacancyList", pageInfo);
+        }
     }
 }
