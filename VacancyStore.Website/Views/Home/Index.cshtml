@@ -1,4 +1,4 @@
-﻿@model List<VacancyStore.DataAccess.Common.Models.Vacancy>
+﻿@model VacancyStore.Website.Models.PageInfo<VacancyStore.DataAccess.Common.Models.Vacancy>
 @{
     ViewBag.Title = "Вакансии";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,11 +6,12 @@
 
 @section VacancyList
 {
-    <ul class="pagination">
-
-    </ul>
+    <p class="h4" id="total-items-count">@ViewHelper.GetTotalCountSignature(Model.TotalItemsCount)</p>
+    <div class="pagination">
+        @Html.GetPageLinks(Model.TotalPageNumber, Model.CurrentPageNumber, x => Url.Action("Index", new { page = x }))
+    </div>
     <ul class="list-group">
-        @foreach(var vacancy in Model)
+        @foreach(var vacancy in Model.ItemsOnPage)
         {
             <li class="list-group-item vacancy-container">
                 <div class="row">
@@ -37,7 +38,7 @@
 
                     </div>
                     <div class="col-lg-2">
-                        <div class="h5">Здесь описание зарплаты!!!!!!!</div>
+                        <div class="h3">@ViewHelper.GetSalarySigniture(vacancy.Salary)</div>
                         <img src="@vacancy.Employer.LogoPath" class="logo"/>                
                     </div>
                 </div>

@@ -31,3 +31,10 @@
     border:1px solid #47AFAF;
     margin:20px;
 }
+
+#total-items-count{
+    font-family:Arial;
+    font-weight:bold;
+    font-size:24px;
+    margin:10px;
+}

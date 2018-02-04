@@ -14,7 +14,7 @@ namespace VacancyStore.DataAccess.Remote.Responses
 
         public string Arguments { get; set; }
 
-        public int Found { get; set; }
+        public long Found { get; set; }
 
         [JsonProperty("alternate_url")]
         public string AlternateUrl { get; set; }

@@ -19,7 +19,7 @@ namespace VacancyStore.DataAccess.Remote.HHApi
             _restApiClient = restApiClient;
         }
 
-        public IEnumerable<Vacancy> Get(bool activeOnly = true, int pageNumber = 0, int perPage = 20)
+        public IEnumerable<Vacancy> Get(out long totalItemsCount, bool activeOnly = true, int pageNumber = 0, int perPage = 20)
         {
             //TODO: подумать как красивее формирвоать запросы
             var queryString = $"vacancies?page={pageNumber}&perPage={perPage}&area=43&employer_id=4934";
@@ -32,10 +32,11 @@ namespace VacancyStore.DataAccess.Remote.HHApi
             var request = new RestRequest(queryString, Method.GET);
             var responseData = _restApiClient.Execute(request);
             var response = JsonConvert.DeserializeObject<GetVacanciesResponse>(responseData);
+            totalItemsCount = response.Found;
             return Mapper.Map<IEnumerable<ShortVacancyInfo>, IEnumerable<Vacancy>>(response.Items);
         }
 
-        public IEnumerable<Vacancy> Search(string vacancyName, string employerName, long? salaryFrom, bool activeOnly = true, int pageNumber = 0, int perPage = 20)
+        public IEnumerable<Vacancy> Search(string vacancyName, string employerName, long? salaryFrom, out long totalItemsCount, bool activeOnly = true, int pageNumber = 0, int perPage = 20)
         {
             throw new NotImplementedException();
         }
