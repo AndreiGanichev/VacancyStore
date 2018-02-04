@@ -14,10 +14,10 @@ namespace VacancyStore.DataAccess.Models.RemoteVacancy
         public BaseIdName Type { get; set; }
 
         /// <summary>
-        /// Ссылка на официальный сайт
+        /// Url(api) для получения данных о работодателе
         /// </summary>
-        [JsonProperty("site_url")]
-        public string SiteUrl { get; set; }
+        [JsonProperty("url")]
+        public string FullInfoApiUrl { get; set; }
 
         /// <summary>
         /// Описание вакансии, содержит html
@@ -39,17 +39,19 @@ namespace VacancyStore.DataAccess.Models.RemoteVacancy
         /// <summary>
         /// Прошла ли компания проверку на сайте
         /// </summary>
+        [JsonProperty("trusted")]
         public bool IsTrusted { get; set; }
 
         /// <summary>
         /// Ссылка на описание работодателя на сайте
         /// </summary>
         [JsonProperty("alternate_url")]
-        public string AlternateUrl { get; set; }
+        public string EmployerPageUrl { get; set; }
 
         /// <summary>
         /// Изображения логотипа компании разных размеров
         /// </summary>
+        [JsonProperty("logo_urls")]
         public LogoUrl LogoUrl { get; set; }
 
         /// <summary>

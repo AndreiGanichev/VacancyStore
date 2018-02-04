@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace VacancyStore.DataAccess.Remote.HHApi
         public IEnumerable<Vacancy> Get(bool activeOnly = true, int pageNumber = 0, int perPage = 20)
         {
             //TODO: подумать как красивее формирвоать запросы
-            var queryString = $"vacancies?page={pageNumber}&perPage={perPage}";
+            var queryString = $"vacancies?page={pageNumber}&perPage={perPage}&area=43&employer_id=4934";
             
             if (activeOnly)
             {
@@ -29,7 +30,8 @@ namespace VacancyStore.DataAccess.Remote.HHApi
             }
 
             var request = new RestRequest(queryString, Method.GET);
-            var response = _restApiClient.Execute<GetVacanciesResponse>(request);
+            var responseData = _restApiClient.Execute(request);
+            var response = JsonConvert.DeserializeObject<GetVacanciesResponse>(responseData);
             return Mapper.Map<IEnumerable<ShortVacancyInfo>, IEnumerable<Vacancy>>(response.Items);
         }
 

@@ -1,0 +1,33 @@
+﻿body{
+    background-color:#47AFAF;
+}
+.vacancy-meta-info{
+    color:gray
+}
+#header{
+   margin:0;
+   background-color:#E89F65;
+}
+
+#main-container{
+    background-color:#E3DEC1;
+}
+
+.vacancy-container{
+    background-color:transparent;
+    border:1px solid #47AFAF;
+    font-family:Arial;
+    margin:5px 0;
+}
+
+#header-title{
+    color:#E3DEC1;
+    font-family:Georgia;
+    font-weight:bold
+}
+
+.logo{
+    background-color:transparent;
+    border:1px solid #47AFAF;
+    margin:20px;
+}

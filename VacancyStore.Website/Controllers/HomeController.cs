@@ -19,7 +19,7 @@ namespace VacancyStore.Website.Controllers
         public ActionResult Index()
         {
             var vacancies = _vacancyRepository.Get();
-            return View();
+            return View(vacancies.ToList());
         }
     }
 }
