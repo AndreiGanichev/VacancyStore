@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
 using RestSharp;
-using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using VacancyStore.DataAccess.Common.Models;
 using VacancyStore.DataAccess.Models.RemoteVacancy;
 using VacancyStore.DataAccess.Remote.Helpers;
@@ -20,17 +18,18 @@ namespace VacancyStore.DataAccess.Remote.HHApi
             _restApiClient = restApiClient;
         }
 
-        public IEnumerable<Vacancy> Get(out long totalItemsCount, bool activeOnly, int pageNumber = 0, int perPage = 20)
+        public IEnumerable<Vacancy> Get(out long totalItemsCount, bool activeOnly, int pageNumber, int perPage)
         {
-            var queryPairs = GetStandartQueryPairs(activeOnly, pageNumber, perPage);
+            pageNumber -= 1;//в api.hh.ru нумерация страниц начинается с нуля 
+            var queryPairs = GetDefaultQueryPairs(activeOnly, pageNumber, perPage);
             var queryString = RemoteHelper.ComposeQueryString(queryPairs, "vacancies");
             var request = new RestRequest(queryString, Method.GET);
             return Execute(request, out totalItemsCount);
         }
 
-        public IEnumerable<Vacancy> Search(SearchData searchData, out long totalItemsCount, bool activeOnly, int pageNumber = 0, int perPage = 20)
+        public IEnumerable<Vacancy> Search(SearchData searchData, out long totalItemsCount, bool activeOnly, int pageNumber, int perPage)
         {
-            var queryPairs = GetStandartQueryPairs(activeOnly, pageNumber, perPage);
+            var queryPairs = GetDefaultQueryPairs(activeOnly, pageNumber, perPage);
 
             if (!string.IsNullOrWhiteSpace(searchData.SearchString)
                 && (searchData.VacancyNameSearchEnable || searchData.VacancyDescSearchEnable || searchData.EmployerSearchEnable))
@@ -55,6 +54,7 @@ namespace VacancyStore.DataAccess.Remote.HHApi
 
             if (searchData.SalaryFrom.HasValue && searchData.SalaryFrom.Value != 0)
             {
+                queryPairs.Add(new KeyValuePair<string, string>("only_with_salary", "true"));
                 queryPairs.Add(new KeyValuePair<string, string>("salary", searchData.SalaryFrom.Value.ToString()));
             }
 
@@ -71,12 +71,14 @@ namespace VacancyStore.DataAccess.Remote.HHApi
             return Mapper.Map<IEnumerable<ShortVacancyInfo>, IEnumerable<Vacancy>>(response.Items ?? new List<ShortVacancyInfo>());
         }
 
-        private IList<KeyValuePair<string,string>> GetStandartQueryPairs(bool activeOnly, int pageNumber, int perPage)
+        private IList<KeyValuePair<string,string>> GetDefaultQueryPairs(bool activeOnly, int pageNumber, int perPage)
         {
             var list = new List<KeyValuePair<string, string>>();
             list.Add(new KeyValuePair<string, string>("page", pageNumber.ToString()));
             list.Add(new KeyValuePair<string, string>("perPage", perPage.ToString()));
             list.Add(new KeyValuePair<string, string>("area", "43"));//калужские вакансии
+            list.Add(new KeyValuePair<string, string>("industry", "7"));//IT, интернет, связь
+            list.Add(new KeyValuePair<string, string>("specialization", "1"));//IT вакансии
 
             if (activeOnly)
             {

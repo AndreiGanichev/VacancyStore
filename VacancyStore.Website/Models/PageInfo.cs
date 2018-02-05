@@ -8,7 +8,7 @@ namespace VacancyStore.Website.Models
     {
         public PageInfo(IEnumerable<T> itemsOnCurrentPage, int currentPageNumber, int itemsPerPage, long totalItemsCount)
         {
-            TotalPageNumber = (int)Math.Ceiling((double)(totalItemsCount/itemsPerPage));
+            TotalPageNumber = (int)Math.Ceiling((double)totalItemsCount/itemsPerPage);
             CurrentPageNumber = currentPageNumber;
             ItemsOnPage = itemsOnCurrentPage;
             TotalItemsCount = totalItemsCount;

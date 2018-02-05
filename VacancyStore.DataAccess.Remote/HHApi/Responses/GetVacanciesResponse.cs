@@ -6,12 +6,18 @@ namespace VacancyStore.DataAccess.Remote.Responses
 {
     public class GetVacanciesResponse
     {
+        /// <summary>
+        /// Возвращены ли кластеры в ответе
+        /// </summary>
         public bool? Clusters { get; set; }
 
         public List<ShortVacancyInfo> Items { get; set; }
 
         public int Pages { get; set; }
 
+        /// <summary>
+        /// Использованные при выполнении запроса параметры
+        /// </summary>
         public string Arguments { get; set; }
 
         public long Found { get; set; }
