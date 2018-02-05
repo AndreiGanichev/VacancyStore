@@ -14,6 +14,7 @@ namespace VacancyStore.Website.Controllers
     {
         private IVacancyRepository _vacancyRepository;
         private int _itemsPerPage = Int32.Parse(ConfigurationManager.AppSettings["ItemsPerPage"]);
+        private bool _activeOnly = Boolean.Parse(ConfigurationManager.AppSettings["ActiveVacanciesOnly"]);
 
         public HomeController(IVacancyRepository vacancyRepository) : base()
         {
@@ -23,18 +24,19 @@ namespace VacancyStore.Website.Controllers
         public ActionResult Index(int page = 1)
         {
             long totalItemsCount;
-            var vacancies = _vacancyRepository.Get(out totalItemsCount, true, page, _itemsPerPage);
+            var vacancies = _vacancyRepository.Get(out totalItemsCount, _activeOnly, page, _itemsPerPage);
             var pageInfo = new PageInfo<Vacancy>(vacancies, page, _itemsPerPage, totalItemsCount);
             return View(pageInfo);
         }
 
         [HttpPost]
-        public ActionResult Search(SearchRequestData searchData)
+        public ActionResult Search(SearchData searchData, int pageNumber = 0)
         {
             //заглушка для тестирования: возвращаем вторую страницу
             long totalItemsCount;
-            var vacancies = _vacancyRepository.Get(out totalItemsCount, true, 2, _itemsPerPage);
-            var pageInfo = new PageInfo<Vacancy>(vacancies, 2, _itemsPerPage, totalItemsCount);
+            var vacancies = _vacancyRepository.Search(searchData, out totalItemsCount, _activeOnly, pageNumber, _itemsPerPage);
+            var pageInfo = new PageInfo<Vacancy>(vacancies, 1, _itemsPerPage, totalItemsCount);
+           
             return PartialView("VacancyList", pageInfo);
         }
     }

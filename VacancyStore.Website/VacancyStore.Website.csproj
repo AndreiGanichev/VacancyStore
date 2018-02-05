@@ -234,7 +234,6 @@
     <Compile Include="Helper\HtmlHelperExtensions.cs" />
     <Compile Include="Helper\ViewHelper.cs" />
     <Compile Include="Models\PageInfo.cs" />
-    <Compile Include="Models\SearchRequestData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,10 @@
-﻿namespace VacancyStore.Website.Models
+﻿
+namespace VacancyStore.DataAccess.Common.Models
 {
-    public class SearchRequestData
+    /// <summary>
+    /// Содержит параметры для поиска
+    /// </summary>
+    public class SearchData
     {
         public string SearchString { get; set; }
         public long? SalaryFrom { get; set; }

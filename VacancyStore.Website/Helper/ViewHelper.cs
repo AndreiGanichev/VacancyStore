@@ -11,21 +11,22 @@ namespace VacancyStore.Website.Helper
         public static string GetTotalCountSignature(long totalCount)
         {
             var result = totalCount.ToString();
-            var lastSymbol = result.PadRight(1);
+            var lastSymbol = result[result.Length-1];
 
-            switch (Int32.Parse(lastSymbol))
+            switch (lastSymbol)
             {
-                case 1:
+                case '1':
                     result = $"Найдена {result} вакансия";
                     break;
-                case (2 - 4):
+                case '2':
+                case '3':
+                case '4':
                     result = $"Найдено {result} вакансии";
                     break;
                 default:
                     result = $"Найдено {result} вакансий";
                     break;
             }
-
             return result;
         }
 
@@ -37,7 +38,8 @@ namespace VacancyStore.Website.Helper
             }
 
             string result = salary.From.HasValue ? $"от {salary.From.Value}" : string.Empty;
-            result += salary.To.HasValue ? $"от {salary.To.Value}" : string.Empty;
+            result += salary.To.HasValue ? $" до {salary.To.Value} " : string.Empty;
+            result += salary.Currency;
             return result;
         }
     }

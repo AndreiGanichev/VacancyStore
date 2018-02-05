@@ -43,6 +43,7 @@
     <Compile Include="Models\BaseIdName.cs" />
     <Compile Include="Models\Employer.cs" />
     <Compile Include="Models\Salary.cs" />
+    <Compile Include="Models\SearchData.cs" />
     <Compile Include="Models\Vacancy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

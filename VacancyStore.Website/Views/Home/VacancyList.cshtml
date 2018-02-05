@@ -10,7 +10,7 @@
         {
             <li class="list-group-item vacancy-container">
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-9">
                         <div class="h3">@vacancy.Name</div>
 
                         @if (!string.IsNullOrWhiteSpace(vacancy.Employer?.EmployerPageUrl))
@@ -32,8 +32,8 @@
                         }
 
                     </div>
-                    <div class="col-lg-2">
-                        <div class="h3">@ViewHelper.GetSalarySigniture(vacancy.Salary)</div>
+                    <div class="col-lg-3">
+                        <div class="h4">@ViewHelper.GetSalarySigniture(vacancy.Salary)</div>
                         <img src="@vacancy.Employer.LogoPath" class="logo" />
                     </div>
                 </div>

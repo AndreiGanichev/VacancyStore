@@ -6,7 +6,9 @@
 
 @section SearchForm
 {
-    @Html.Partial("Search", new VacancyStore.Website.Models.SearchRequestData())
+    <div id="SearchContainer">
+        @Html.Partial("Search", new VacancyStore.DataAccess.Common.Models.SearchData())
+    </div>
 }
 
 @section VacancyList

@@ -28,8 +28,6 @@
 }
 
 .logo{
-    background-color:transparent;
-    border:1px solid #47AFAF;
     margin:20px;
 }
 
@@ -51,3 +49,13 @@
     font-size:16px;
     float:right;
 }
+
+#ListContainer{
+    min-height:500px;
+}
+
+#SearchContainer{
+    margin:10px;
+}
+
+
