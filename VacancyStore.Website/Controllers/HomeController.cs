@@ -29,12 +29,10 @@ namespace VacancyStore.Website.Controllers
         [HttpPost]
         public ActionResult Search(SearchData searchData, int page = 1)
         {
-            if (!searchData.VacancyDescSearchEnable 
-                && !searchData.VacancyNameSearchEnable 
-                && !searchData.EmployerSearchEnable
-                && !searchData.SalaryFrom.HasValue)
+            if (!searchData.EmployerSearchEnable && !searchData.VacancyNameSearchEnable 
+                && !searchData.VacancyDescSearchEnable && !searchData.SalaryFrom.HasValue)
             {
-                RedirectToAction("Index");
+                RedirectToAction("Index", new { page = 1});
             }
 
             long totalItemsCount;

@@ -27,6 +27,7 @@
         <div class="form-group row">
             <label for="SalaryFrom" class="col-lg-5 search-form-label">Зарплата от</label>
             @Html.TextBox("SalaryFrom", Model.SalaryFrom, new { @class = "form-control-plaintext col-lg-7" })
+            @Html.ValidationMessageFor(Model => Model.SalaryFrom)
         </div>
         <div class="form-actions">
             <button class="btn btn-default" id="SearchButton">Найти</button>

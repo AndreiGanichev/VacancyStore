@@ -1,4 +1,5 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
+
 namespace VacancyStore.DataAccess.Common.Models
 {
     /// <summary>
@@ -8,6 +9,7 @@ namespace VacancyStore.DataAccess.Common.Models
     {
         public string SearchString { get; set; }
 
+        [RegularExpression("^[0-9]*$", ErrorMessage ="Вводить можно только цифры")]
         public long? SalaryFrom { get; set; }
 
         public bool VacancyNameSearchEnable { get; set; }

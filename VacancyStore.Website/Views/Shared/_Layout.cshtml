@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="jumbotron" id="header">
-        @Html.ActionLink("IT вакансии hh.ru в Калуге", "Index", "Home", new { @class = "title h1" })
+        @Html.ActionLink("IT вакансии hh.ru в Калуге", "Index", new { page = 1}, new { @class = "title h1" })
     </div>
     <div class="row">
         <div class="col-lg-4" id="left-container">
@@ -27,6 +27,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/ajax")
+    @Scripts.Render("~/bundles/validation")
     @RenderSection("scripts", required: false)
 </body>
 </html>

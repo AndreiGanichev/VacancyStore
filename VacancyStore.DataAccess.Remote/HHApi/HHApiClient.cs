@@ -20,7 +20,6 @@ namespace VacancyStore.DataAccess.Remote.HHApi
 
         public IEnumerable<Vacancy> Get(out long totalItemsCount, bool activeOnly, int pageNumber, int perPage)
         {
-            pageNumber -= 1;//в api.hh.ru нумерация страниц начинается с нуля 
             var queryPairs = GetDefaultQueryPairs(activeOnly, pageNumber, perPage);
             var queryString = RemoteHelper.ComposeQueryString(queryPairs, "vacancies");
             var request = new RestRequest(queryString, Method.GET);
@@ -73,6 +72,7 @@ namespace VacancyStore.DataAccess.Remote.HHApi
 
         private IList<KeyValuePair<string,string>> GetDefaultQueryPairs(bool activeOnly, int pageNumber, int perPage)
         {
+            pageNumber -= 1;//в api.hh.ru нумерация страниц начинается с нуля 
             var list = new List<KeyValuePair<string, string>>();
             list.Add(new KeyValuePair<string, string>("page", pageNumber.ToString()));
             list.Add(new KeyValuePair<string, string>("perPage", perPage.ToString()));

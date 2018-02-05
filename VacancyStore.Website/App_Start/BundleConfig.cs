@@ -20,6 +20,9 @@ namespace VacancyStore.Website.App_Start
                 .Include("~/Scripts/bootstrap*"));
             bundles.Add(new ScriptBundle("~/bundles/ajax")
                 .Include("~/Scripts/jquery.unobtrusive-ajax.js"));
+            bundles.Add(new ScriptBundle("~/bundles/validation")
+                .Include("~/Scripts/jquery.validate.js")
+                .Include("~/Scripts/jquery.validate.unobtrusive.js"));
 
             bundles.Add(new StyleBundle("~/Content/css/jqueryui")
                 .Include("~/Content/themes/jquery-ui*"));
